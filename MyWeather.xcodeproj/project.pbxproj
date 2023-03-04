@@ -49,6 +49,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A84B9C6129B3A58200BBCAB9 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A8FA0E02296AE50A00D45AB1 /* AppDelegate.swift */,
+				A8FA0E04296AE50A00D45AB1 /* SceneDelegate.swift */,
+				A8FA0E0B296AE50C00D45AB1 /* Assets.xcassets */,
+				A8FA0E0D296AE50C00D45AB1 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		A8FA0DF6296AE50A00D45AB1 = {
 			isa = PBXGroup;
 			children = (
@@ -71,12 +82,9 @@
 				A8FA0E20297163E500D45AB1 /* CollectionViewCell */,
 				A8FA0E17296AE92E00D45AB1 /* HourlyCollectionCell */,
 				A8FA0E16296AE91400D45AB1 /* WeatherCell */,
-				A8FA0E02296AE50A00D45AB1 /* AppDelegate.swift */,
-				A8FA0E04296AE50A00D45AB1 /* SceneDelegate.swift */,
+				A84B9C6129B3A58200BBCAB9 /* SupportingFiles */,
 				A8FA0E06296AE50A00D45AB1 /* ViewController.swift */,
 				A8FA0E08296AE50A00D45AB1 /* Main.storyboard */,
-				A8FA0E0B296AE50C00D45AB1 /* Assets.xcassets */,
-				A8FA0E0D296AE50C00D45AB1 /* LaunchScreen.storyboard */,
 				A8FA0E10296AE50C00D45AB1 /* Info.plist */,
 			);
 			path = MyWeather;
