@@ -10,6 +10,7 @@ import CoreLocation
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
+    // MARK: Declaration
     @IBOutlet var table: UITableView!
     var models = [DailyWeatherEntry]()
     var hourlyModels = [HourlyWeatherEntry]()
@@ -22,6 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let backGroundColorBlue = #colorLiteral(red: 0, green: 0.3402611613, blue: 0.7605063319, alpha: 1)
     let defaultFont = UIFont(name: "Helvetica-Bold", size: 20)
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -91,6 +93,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
     }
     
+    // MARK: API Request
     func requestWeatherForLocation() {
         guard let currentLocation = currentLocation else {
             return
@@ -132,6 +135,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }).resume()
     }
     
+    // MARK: Header
     func createTableHeader() -> UIView {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height/4))
         
@@ -172,7 +176,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return headerView
     }
     
-    // Table
+    // MARK: Table
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -208,6 +212,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 }
 
+// MARK: Codables
 struct WeatherResponse: Codable {
     let latitude: Float
     let longitude: Float
