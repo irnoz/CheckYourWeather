@@ -8,11 +8,6 @@
 import UIKit
 import CoreLocation
 
-// To get current location: CoreLocation
-// To show list of upcomeing days: Table View
-// To show data ia a custom cell: Collection View
-// to get the data: API request
-
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     @IBOutlet var table: UITableView!
@@ -44,13 +39,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewWillAppear(animated)
         setupLocation()
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        setupLocation()
-//    }
     
-    // Location
+    // MARK: Location
     func setupLocation() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -68,9 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func requestAddressForLocation() {
-        guard let currentLocation = currentLocation else {
-            return
-        }
+        guard let currentLocation = currentLocation else { return }
         
         var locality = ""
         var administrativeArea = ""
@@ -119,8 +107,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("Data could not be validated, something went wrong!")
                 return
             }
-            // Convert Data to models(object)
             
+            // Convert Data to models(object)
             var json: WeatherResponse?
             do {
                 json = try JSONDecoder().decode(WeatherResponse.self, from: data)
@@ -134,14 +122,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
             let entries = result.daily.data
-            
             self.models.append(contentsOf: entries)
             
             let current = result.currently
             self.currentWeather = current
             
             self.hourlyModels = result.hourly.data
-            
             
         }).resume()
     }
@@ -236,22 +222,7 @@ struct CurrentWeather: Codable {
     let time: Int
     let summary: String
     let icon: String
-//    let nearestStormDistance: Int
-//    let nearestStormBearing: Int
-//    let precipIntensity: Int
-//    let precipProbability: Int
     let temperature: Double
-//    let apparentTemperature: Double
-//    let dewPoint: Double
-//    let humidity: Double
-//    let pressure: Double
-//    let windSpeed: Double
-//    let windGust: Double
-//    let windBearing: Int
-//    let cloudCover: Double
-//    let uvIndex: Int
-//    let visibility: Double
-//    let ozone: Double
 }
 
 struct DailyWeather: Codable {
@@ -264,42 +235,8 @@ struct DailyWeatherEntry: Codable {
     let time: Int
     let summary: String
     let icon: String
-//    let sunriseTime: Int
-//    let sunsetTime: Int
-//    let moonPhase: Double
-//    let precipIntensity: Float
-//    let precipIntensityMax: Float
-//    let precipIntensityMaxTime: Int
-//    let precipProbability: Double
-//    let precipType: String?
     let temperatureHigh: Double
-//    let temperatureHighTime: Int
     let temperatureLow: Double
-//    let temperatureLowTime: Int
-//    let apparentTemperatureHigh: Double
-//    let apparentTemperatureHighTime: Int
-//    let apparentTemperatureLow: Double
-//    let apparentTemperatureLowTime: Int
-//    let dewPoint: Double
-//    let humidity: Double
-//    let pressure: Double
-//    let windSpeed: Double
-//    let windGust: Double
-//    let windGustTime: Int
-//    let windBearing: Int
-//    let cloudCover: Double
-//    let uvIndex: Int
-//    let uvIndexTime: Int
-//    let visibility: Double
-//    let ozone: Double
-//    let temperatureMin: Double
-//    let temperatureMinTime: Int
-//    let temperatureMax: Double
-//    let temperatureMaxTime: Int
-//    let apparentTemperatureMin: Double
-//    let apparentTemperatureMinTime: Int
-//    let apparentTemperatureMax: Double
-//    let apparentTemperatureMaxTime: Int
 }
 
 struct HourlyWeather: Codable {
@@ -312,19 +249,5 @@ struct HourlyWeatherEntry: Codable {
     let time: Int
     let summary: String
     let icon: String
-//    let precipIntensity: Float
-//    let precipProbability: Double
-//    let precipType: String?
     let temperature: Double
-//    let apparentTemperature: Double
-//    let dewPoint: Double
-//    let humidity: Double
-//    let pressure: Double
-//    let windSpeed: Double
-//    let windGust: Double
-//    let windBearing: Int
-//    let cloudCover: Double
-//    let uvIndex: Int
-//    let visibility: Double
-//    let ozone: Double
 }
